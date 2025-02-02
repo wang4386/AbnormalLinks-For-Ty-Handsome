@@ -4,9 +4,9 @@
  * 异常友链检查（后台管理->友链检查）
  * 
  * @package AbnormalLinks
- * @author 呆小萌
- * @version 1.0.1
- * @link https://www.zhaoyingtian.com/archives/95.html
+ * @author 青柠&呆小萌
+ * @version 1.0.2
+ * @link https://qninq.cn/archives/abnormalLinks.html
  */
 class AbnormalLinks_Plugin implements Typecho_Plugin_Interface
 {
