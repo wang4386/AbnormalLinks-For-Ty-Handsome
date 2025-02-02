@@ -59,27 +59,27 @@ if (!$user->pass('administrator')) {
             });
         };
 
-        function check_get(value) {
-            return new Promise(function(resolve, reject) {
-                $.ajax({
-                    type: 'GET',
-                    url: value.url,
-                    dataType: 'jsonp',
-                    timeout: 10000,
-                    complete: function(res) {
-                        if (res.status === 200) {
-                            //console.log('有效链接');
-                            //console.log(value);
-                            resolve(true);
-                        } else {
-                            //console.log('无效链接');
-                            //console.log(value);
-                            resolve(res.status);
-                        }
-                    }
-                });
-            });
-        }
+function check_get(value) {
+    return new Promise((resolve) => {
+        $.ajax({
+            url: `https://qninq.cn/api/zt/?url=${encodeURIComponent(value.url)}`,
+            method: 'GET',
+            dataType: 'json', // Ensure the response is parsed as JSON
+            timeout: 10000, // Add a timeout for the request
+            success: function(response) {
+                if (response.status_code === 200) {
+                    resolve(true);
+                } else {
+                    resolve(response.status_code);
+                }
+            },
+            error: function() {
+                resolve('error');
+            }
+        });
+    });
+}
+
 
         function del() { //jquery获取复选框值
             var chk_value = [];
